@@ -51,10 +51,16 @@ module Administrate
 
     def update
       if requested_resource.update(resource_params)
-        redirect_to(
-          [namespace, requested_resource],
-          notice: translate_with_resource("update.success"),
-        )
+        if dashboard.respond_to? :update_redirect
+          redirect_to(
+              dashboard.update_redirect(requested_resource)
+          )
+        else
+          redirect_to(
+              [namespace, requested_resource],
+              notice: translate_with_resource("update.success"),
+          )
+        end
       else
         render :edit, locals: {
           page: Administrate::Page::Form.new(dashboard, requested_resource),

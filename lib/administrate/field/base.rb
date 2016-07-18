@@ -16,10 +16,11 @@ module Administrate
         false
       end
 
-      def initialize(attribute, data, page, options = {})
+      def initialize(attribute, data, page, resource, options = {})
         @attribute = attribute
         @data = data
         @page = page
+        @resource = resource
         @options = options
       end
 
@@ -35,11 +36,15 @@ module Administrate
         attribute.to_s
       end
 
+      def readonly?
+        options.fetch(:readonly, false)
+      end
+
       def to_partial_path
         "/fields/#{self.class.field_type}/#{page}"
       end
 
-      attr_reader :attribute, :data, :page
+      attr_reader :attribute, :data, :page, :resource
 
       protected
 

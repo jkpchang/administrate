@@ -24,7 +24,11 @@ module Administrate
       private
 
       def candidate_resources
-        associated_class.all
+        if options.fetch(:candidate_resources_query, nil).present?
+          eval (options.fetch(:candidate_resources_query))
+        else
+          associated_class.all
+        end
       end
 
       def display_candidate_resource(resource)
