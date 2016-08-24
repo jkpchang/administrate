@@ -6,6 +6,6 @@
 //= require_tree .
 
 $(function() {
-  var $table = $('table.float_header');
+  var $table = $('table.collection-data');
   $table.floatThead();
 });

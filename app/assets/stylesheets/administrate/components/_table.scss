@@ -2,6 +2,11 @@
   padding: 0em;
 }
 
+// for jQuery.float-header
+.collection-data thead {
+  background-color: white;
+}
+
 .table__row {
   background-color: $white;
   border-left: 2px solid transparent;
