@@ -9,6 +9,8 @@ require "administrate/field/polymorphic"
 require "administrate/field/select"
 require "administrate/field/string"
 require "administrate/field/text"
+require "administrate/field/color_picker"
+require "administrate/field/font_picker"
 
 module Administrate
   class BaseDashboard

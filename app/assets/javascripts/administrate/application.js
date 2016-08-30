@@ -8,4 +8,12 @@
 $(function() {
   var $table = $('table.collection-data');
   $table.floatThead();
+
+  $('input.color-picker').spectrum({
+    color: $(this).val()
+  });
+
+  $('input.font-picker').fontselect();
+
 });
+
