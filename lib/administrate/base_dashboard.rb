@@ -11,6 +11,7 @@ require "administrate/field/string"
 require "administrate/field/text"
 require "administrate/field/color_picker"
 require "administrate/field/font_picker"
+require "administrate/field/html_tinymce"
 
 module Administrate
   class BaseDashboard
