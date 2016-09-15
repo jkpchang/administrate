@@ -18,7 +18,15 @@ to display a collection of resources in an HTML table.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Collection
 %>
 
-<table class="collection-data" aria-labelledby="page-title">
+<style>
+  .tableDragClass {
+    background-color: lightgreen;
+  }
+</style>
+
+<table class="collection-data <%= "tablednd" if defined?(reorder_action) and reorder_action.present? %>"
+       data-reorder-url="<%= url_for([reorder_action, namespace, page_resource]) if defined?(reorder_action) and reorder_action.present? %>"
+       aria-labelledby="page-title">
   <thead>
     <tr>
       <% collection_presenter.attribute_types.each do |attr_name, attr_type| %>
@@ -57,10 +65,11 @@ to display a collection of resources in an HTML table.
           role="link"
           tabindex="0"
           data-url="<%= polymorphic_path([namespace, resource]) -%>"
+          resource-id="<%= resource.id -%>"
           >
         <% collection_presenter.attributes_for(resource).each do |attribute| %>
           <td class="cell-data cell-data--<%= attribute.html_class %>">
-            <%= render_field attribute %>
+            <%= render_field attribute, {page_resource: resource} %>
           </td>
         <% end %>
 

@@ -31,14 +31,24 @@ as well as a link to its edit page.
 
 <dl>
   <% page.attributes.each do |attribute| %>
-    <dt class="attribute-label">
-    <%= t(
-      "helpers.label.#{resource_name}.#{attribute.name}",
-      default: attribute.name.titleize,
-    ) %>
-    </dt>
+    <% if attribute.name == "divider" %>
+      <dt class="attribute-label">
+        <hr/>
+      </dt>
+      <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
+        <hr/>
+      </dd>
+    <% else %>
+      <dt class="attribute-label">
+        <%= t(
+                "helpers.label.#{resource_name}.#{attribute.name}",
+                default: attribute.name.titleize,
+            ) %>
+      </dt>
 
-    <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
-        ><%= render_field attribute %></dd>
+      <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
+        <%= render_field attribute, {page_resource: page.resource} %>
+      </dd>
+    <% end %>
   <% end %>
 </dl>

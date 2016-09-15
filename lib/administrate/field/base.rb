@@ -40,6 +40,14 @@ module Administrate
         options.fetch(:readonly, false)
       end
 
+      def reorder_action
+        options.fetch(:reorder_action, false)
+      end
+
+      def upload_action
+        options.fetch(:upload_action, false)
+      end
+
       def to_partial_path
         "/fields/#{self.class.field_type}/#{page}"
       end

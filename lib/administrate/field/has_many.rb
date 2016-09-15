@@ -4,7 +4,7 @@ require "administrate/page/collection"
 module Administrate
   module Field
     class HasMany < Associative
-      DEFAULT_LIMIT = 5
+      DEFAULT_LIMIT = 50
 
       def self.permitted_attribute(attribute)
         { "#{attribute.to_s.singularize}_ids".to_sym => [] }

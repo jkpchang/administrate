@@ -22,7 +22,9 @@ from the associated resource class's dashboard.
   <%= render(
     "collection",
     collection_presenter: field.associated_collection,
-    resources: field.resources
+    page_resource: page_resource,
+    resources: field.resources,
+    reorder_action: field.reorder_action,
   ) %>
 
   <% if field.more_than_limit? %>
@@ -33,8 +35,17 @@ from the associated resource class's dashboard.
         total_count: field.data.count,
       ) %>
     </span>
+    <br/><br/>
   <% end %>
 
 <% else %>
   <%= t("administrate.fields.has_many.none", default: "–") %>
+<% end %>
+
+<% if field.upload_action.present? %>
+  <%= form_for([field.upload_action, namespace, page_resource], html: { class: "form", style: "padding: 10px; background-color: #eee;", multipart: true }, method: :post) do |f| %>
+    <label style="width: none; float: left;">Add more:&nbsp;&nbsp;</label>
+    <input type="file" name="files[]" id="files" multiple="multiple" style="width: 150px; float: left;">
+    <input type="submit" name="commit" value="Upload" style="width: none; margin-top: 0px;">
+  <% end %>
 <% end %>

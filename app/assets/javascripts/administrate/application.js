@@ -6,8 +6,7 @@
 //= require_tree .
 
 $(function () {
-  var $table = $('table.collection-data');
-  $table.floatThead();
+  $('table.collection-data').floatThead();
 
   $('input.color-picker').spectrum({
     color: $(this).val()
@@ -26,5 +25,34 @@ $(function () {
     toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code '
   });
 
+  $(".tablednd").tableDnD({
+    onDragClass: "tableDragClass",
+    onDragStop: function(table, row) {
+
+      // get new order of resoruce IDs
+      var rows = table.tBodies[0].rows;
+      var id_arr = ""
+      for (var i=0; i< rows.length; i++) {
+        id_arr += $(rows[i]).attr("resource-id") +",";
+      }
+      console.log(id_arr);
+
+      // retrieve patch URL from table
+      url = $(table).data("reorder-url");
+
+      // submit ajax call
+      $.ajax({
+        url: url,
+        method: "PATCH",
+        data : "ids=" + id_arr,
+        success: function(data, textStatus, jqXHR) {
+          console.log("done!");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log("status:" + jqXHR.status);
+        }
+      });
+    }
+  });
 });
 

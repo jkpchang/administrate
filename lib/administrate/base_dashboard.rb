@@ -12,13 +12,18 @@ require "administrate/field/text"
 require "administrate/field/color_picker"
 require "administrate/field/font_picker"
 require "administrate/field/html_tinymce"
+require "administrate/field/divider"
 
 module Administrate
   class BaseDashboard
     include Administrate
 
+    GLOBAL_ATTRIBUTE_TYPES = {
+        divider: Field::Divider
+    }
+
     def attribute_types
-      self.class::ATTRIBUTE_TYPES
+      self.class::GLOBAL_ATTRIBUTE_TYPES.merge(self.class::ATTRIBUTE_TYPES)
     end
 
     def attribute_type_for(attribute_name)

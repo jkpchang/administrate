@@ -31,7 +31,9 @@ and is augmented with [Selectize].
       <%= render(
               "collection",
               collection_presenter: field.associated_collection,
-              resources: field.resources
+              page_resource: page_resource,
+              resources: field.resources,
+              reorder_action: field.reorder_action
           ) %>
 
       <% if field.more_than_limit? %>

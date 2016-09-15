@@ -14,7 +14,15 @@ module Administrate
       private
 
       def format_string
-        prefix + "%.#{decimals}f"
+        if currency?
+          helper.number_to_currency(data, :precision => decimals)
+        else
+          prefix + "%.#{decimals}f"
+        end
+      end
+
+      def currency?
+        options.fetch(:is_currency, false)
       end
 
       def prefix
@@ -24,6 +32,15 @@ module Administrate
       def decimals
         options.fetch(:decimals, 0)
       end
+
+      private
+
+      def helper
+        @helper ||= Class.new do
+          include ActionView::Helpers::NumberHelper
+        end.new
+      end
+
     end
   end
 end
