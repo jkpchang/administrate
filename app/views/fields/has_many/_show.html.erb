@@ -22,7 +22,7 @@ from the associated resource class's dashboard.
   <%= render(
     "collection",
     collection_presenter: field.associated_collection,
-    page_resource: page_resource,
+    page_resource: defined?(page_resource) ? page_resource : nil,
     resources: field.resources,
     reorder_action: field.reorder_action,
   ) %>
