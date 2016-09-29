@@ -16,9 +16,10 @@ By default, the input is a text field that is augmented with [DateTimePicker].
 [DateTimePicker]: https://github.com/Eonasdan/bootstrap-datetimepicker
 %>
 
-<div class="field-unit__label">
-  <%= f.label field.attribute %>
-</div>
-<div class="field-unit__field">
-  <%= f.text_field field.attribute, class: "datetimepicker" %>
+<%= f.label field.attribute, {class: "col-lg-2 control-label"} %>
+<div class="col-lg-6">
+  <div class="input-group">
+    <%= f.text_field field.attribute, class: "datetimepicker form-control" %>
+    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+  </div>
 </div>

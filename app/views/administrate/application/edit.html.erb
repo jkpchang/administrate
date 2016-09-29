@@ -18,14 +18,16 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
 <% content_for(:title) { "Edit #{page.page_title}" } %>
 
 <header class="header">
-  <h1 class="header__heading"><%= content_for(:title) %></h1>
-  <div class="header__actions">
-    <%= link_to(
-      "Show",
-      [namespace, page.resource],
-      class: "button",
-    ) %>
-  </div>
+  <h3 class="header__heading"><%= content_for(:title) %>
+    <div class="header__actions pull-right">
+      <%= link_to(
+              "Show",
+              [namespace, page.resource],
+              class: "button btn btn-info",
+          ) %>
+    </div>
+  </h3>
 </header>
+<br/>
 
 <%= render "form", page: page %>

@@ -24,7 +24,7 @@ to display a collection of resources in an HTML table.
   }
 </style>
 
-<table class="collection-data <%= "tablednd" if defined?(reorder_action) and reorder_action.present? %>"
+<table class="table table-bordered collection-data <%= "tablednd" if defined?(reorder_action) and reorder_action.present? %>"
        data-reorder-url="<%= url_for([reorder_action, namespace, page_resource]) if defined?(reorder_action) and reorder_action.present? %>"
        aria-labelledby="page-title">
   <thead>
@@ -34,28 +34,25 @@ to display a collection of resources in an HTML table.
         cell-label--<%= attr_type.html_class %>
         cell-label--<%= collection_presenter.ordered_html_class(attr_name) %>
         " scope="col">
-        <%= link_to(params.merge(
-          collection_presenter.order_params_for(attr_name)
-        )) do %>
-        <%= t(
-          "helpers.label.#{resource_name}.#{attr_name}",
-          default: attr_name.to_s,
-        ).titleize %>
+          <%= link_to(params.merge(
+            collection_presenter.order_params_for(attr_name)
+          )) do %>
+            <%= t(
+              "helpers.label.#{resource_name}.#{attr_name}",
+              default: attr_name.to_s,
+            ).titleize %>
 
             <% if collection_presenter.ordered_by?(attr_name) %>
-              <span class="cell-label__sort-indicator cell-label__sort-indicator--<%= collection_presenter.ordered_html_class(attr_name) %>">
-                <%= svg_tag(
-                  "administrate/sort_arrow.svg",
-                  "sort_arrow",
-                  width: "13",
-                  height: "13"
-                ) %>
-              </span>
+              <% if collection_presenter.ordered_html_class(attr_name) == 'asc' %>
+                <i class="fa fa-arrow-down"></i>
+              <% else %>
+                <i class="fa fa-arrow-up"></i>
+              <% end %>
             <% end %>
           <% end %>
         </th>
       <% end %>
-      <th colspan="2" scope="col"></th>
+      <th class="cell-label" colspan="2" scope="col"></th>
     </tr>
   </thead>
 

@@ -19,36 +19,37 @@ as well as a link to its edit page.
 <% content_for(:title) { page.page_title } %>
 
 <header class="header">
-  <h1 class="header__heading"><%= content_for(:title) %></h1>
-  <div class="header__actions">
-    <%= link_to(
-      "Edit",
-      [:edit, namespace, page.resource],
-      class: "button",
-    ) %>
-  </div>
+  <h3 class="header__heading"><%= content_for(:title) %>
+    <div class="header__actions pull-right">
+      <%= link_to(
+              "Edit",
+              [:edit, namespace, page.resource],
+              class: "button btn btn-info",
+          ) %>
+    </div>
+  </h3>
 </header>
+<br/>
 
-<dl>
+<table class="table table-bordered">
+
   <% page.attributes.each do |attribute| %>
+    <tr>
     <% if attribute.name == "divider" %>
-      <dt class="attribute-label">
-        <hr/>
-      </dt>
-      <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
-        <hr/>
-      </dd>
+      </table>
+      <table class="table table-bordered">
     <% else %>
-      <dt class="attribute-label">
+      <td class="attribute-label" style="min-width: 130px;">
         <%= t(
                 "helpers.label.#{resource_name}.#{attribute.name}",
-                default: attribute.name.titleize,
+                default: attribute.name.titleize
             ) %>
-      </dt>
+      </td>
 
-      <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
+      <td class="attribute-data attribute-data--<%=attribute.html_class%>">
         <%= render_field attribute, {page_resource: page.resource} %>
-      </dd>
+      </td>
     <% end %>
+    </tr>
   <% end %>
-</dl>
+</table>

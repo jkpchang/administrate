@@ -21,11 +21,9 @@ and is augmented with [Selectize].
 
 <% if field.respond_to? :readonly? and  field.readonly? %>
 
-  <div class="field-unit__label">
-    <%= f.label field.attribute %>
-  </div>
+  <%= f.label field.attribute, class: "col-lg-2 control-label"  %>
 
-  <div class="field-unit__field">
+  <div class="col-lg-10">
 
     <% if field.resources.any? %>
       <%= render(
@@ -53,11 +51,9 @@ and is augmented with [Selectize].
   </div>
 
 <% else %>
-  <div class="field-unit__label">
-    <%= f.label field.attribute %>
-  </div>
-  <div class="field-unit__field">
-    <%= f.select(field.attribute_key, nil, {}, multiple: true) do %>
+  <%= f.label field.attribute, class: "col-lg-2 control-label"  %>
+  <div class="col-lg-6">
+    <%= f.select(field.attribute_key, nil, {}, {multiple: true, class: "form-control"}) do %>
       <%= options_for_select(field.associated_resource_options, field.selected_options) %>
     <% end %>
   </div>
