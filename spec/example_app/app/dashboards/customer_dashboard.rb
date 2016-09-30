@@ -10,6 +10,8 @@ class CustomerDashboard < Administrate::BaseDashboard
     orders: Field::HasMany,
     updated_at: Field::DateTime,
     kind: Field::Select.with_options(collection: Customer::KINDS),
+    favorite_color: Field::ColorPicker,
+    favorite_font: Field::FontPicker
   }
 
   COLLECTION_ATTRIBUTES = ATTRIBUTE_TYPES.keys
@@ -19,6 +21,8 @@ class CustomerDashboard < Administrate::BaseDashboard
     :email,
     :email_subscriber,
     :kind,
+    :favorite_color,
+    :favorite_font
   ].freeze
 
   def display_resource(customer)

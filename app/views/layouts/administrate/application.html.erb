@@ -21,9 +21,6 @@ By default, it renders:
   <title><%= content_for(:title) %> | <%= Rails.application.class.parent_name.titlecase %></title>
   <%= csrf_meta_tags %>
 
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
   <!-- custom style -->
   <%= render "stylesheet" %>
 
@@ -57,16 +54,8 @@ By default, it renders:
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          <% if notice.present? %>
-            <div class="alert alert-success"><%= notice %></div>
-          <% end %>
-
-          <% if alert.present? %>
-            <div class="alert alert-danger"><%= alert %></div>
-          <% end %>
-
-          <%= content_for(:search) %>
           <%= render "flashes" -%>
+          <%= content_for(:search) %>
           <%= yield %>
         </div>
       </div>
@@ -83,37 +72,16 @@ By default, it renders:
 <div class="modal fade" id="add-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="model-body">
-
-      </div>
     </div>
   </div>
 </div>
 
-
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <%= render "javascript" %>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <% if defined?(@additional_script) %>
   <%= @additional_script.html_safe %>
 <% end %>
-
-<script>
-  $(function() {
-    $(".add-model-btn").click(function() {
-      $("#add-modal").modal({remote: $(this).data("add-model-url")});
-    });
-  });
-
-  $('body').on('hidden.bs.modal', '.modal', function () {
-    $(this).removeData('bs.modal');
-  });
-</script>
 
 </body>
 </html>

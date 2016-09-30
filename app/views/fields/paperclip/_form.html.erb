@@ -1,9 +1,5 @@
-
-<div class="field-unit__label">
-  <%= f.label field.attribute %>
-</div>
-
-<div class="field-unit__field">
+<%= f.label field.attribute, class: "col-lg-2 control-label" %>
+<div class="col-lg-6">
   <%= image_tag field.thumbnail, {width: "300px"} %>
   <%= f.file_field field.attribute %>
 </div>

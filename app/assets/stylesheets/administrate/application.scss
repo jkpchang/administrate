@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 @import "normalize-rails";
 @import "bourbon";
 @import "neat";
@@ -8,3 +11,7 @@
 @import "datetime_picker";
 
 @import "components/**/*";
+
+.field_with_errors {
+  @extend .has-error;
+}

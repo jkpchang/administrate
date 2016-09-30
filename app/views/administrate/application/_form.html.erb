@@ -16,11 +16,11 @@ and renders all form fields for a resource's editable attributes.
 
 <%= form_for([namespace, page.resource], html: { class: "form-horizontal" }) do |f| %>
   <% if page.resource.errors.any? %>
-    <div id="error_explanation">
-      <h2>
+    <div class="alert alert-danger" id="error_explanation">
+      <h4>
         <%= pluralize(page.resource.errors.count, "error") %>
         prohibited this <%= page.resource_name %> from being saved:
-      </h2>
+      </h4>
 
       <ul>
         <% page.resource.errors.full_messages.each do |message| %>

@@ -17,5 +17,9 @@ By default, the input is a checkbox.
 
 <%= f.label field.attribute, {class: "col-lg-2 control-label"} %>
 <div class="col-lg-6">
-  <%= f.check_box field.attribute, {class: "form-control"} %>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box field.attribute %>
+    </label>
+  </div>
 </div>

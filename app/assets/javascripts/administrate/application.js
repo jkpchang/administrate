@@ -1,19 +1,41 @@
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require selectize
 //= require moment
 //= require datetime_picker
 //= require_tree .
 
 $(function () {
-  $('table.collection-data').floatThead();
 
-  $('input.color-picker').spectrum({
-    color: $(this).val()
+  // -------------------------
+  // support add modal
+  // -------------------------
+
+  $(function() {
+    $(".add-model-btn").click(function() {
+      $("#add-modal").modal({remote: $(this).data("add-model-url")});
+    });
   });
 
+  $('body').on('hidden.bs.modal', '.modal', function () {
+    $(this).removeData('bs.modal');
+  });
+
+  // -------------------------
+  // float table
+  // -------------------------
+  $('table.collection-data').floatThead();
+
+  // -------------------------
+  // font and color pickers
+  // -------------------------
+  $('.colorpicker-component').colorpicker({});
   $('input.font-picker').fontselect();
 
+  // -------------------------
+  // tiny mce field
+  // -------------------------
   tinymce.init({
     selector: 'textarea.tinymce',
     height: 200,
@@ -25,6 +47,9 @@ $(function () {
     toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code '
   });
 
+  // -------------------------
+  // drag and drop to reorder
+  // -------------------------
   $(".tablednd").tableDnD({
     onDragClass: "tableDragClass",
     onDragStop: function(table, row) {

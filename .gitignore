@@ -2,3 +2,6 @@
 /.bundle
 /log/*
 .idea/*
+/spec/example_app/tmp
+/spec/example_app/log/*
+/tmp/*

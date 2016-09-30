@@ -4,7 +4,7 @@ module Administrate
   module Field
     class HtmlTinymce < Administrate::Field::Base
       def self.searchable?
-        false
+        true
       end
 
       def truncate

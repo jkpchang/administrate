@@ -2,13 +2,16 @@
 ```
 - Currency Field: Similar to Number field, but prefixed with $ and using currency converter to display the number better.
 - Paperclip Field: Display thumbnail of Paperclip pictures properly.
+- Font Picker Field: Nice widget to pick Google Fonts
+- Color Picker Field: Nice widget to pick color
+- TinyMCE Field: Use TinyMCE widget to write HTML
 - Replace all styles with Bootstrap (currently using Bootstrap 3.3.7).
 ```
 
 # FUTURE UPDATES PLANNED in this fork
 ```
-- Better support for Has_Many relationship and has in-line modal to add associations easily.
-- Port some of the nicer UI features from Rails Admin to here, while maintaining the Rails design of Administrate.
+- Better UI support for Has_Many and allow users to create new parent objects easily via Bootstrap modals.
+- Port some of the nicer UI features from rails_admin to here, while maintaining the overall design of Administrate.
 ```
 
 # Administrate
@@ -102,4 +105,4 @@ programming in style.
 * [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
 * [Style](http://github.com/thoughtbot/guides/blob/master/style)
 
-[demo]: https://administrate-prototype.herokuapp.com/admin
+[demo]: https://administrate-bootstrap.herokuapp.com/admin

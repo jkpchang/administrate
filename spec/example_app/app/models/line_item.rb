@@ -8,6 +8,10 @@ class LineItem < ActiveRecord::Base
   validates :quantity, presence: true
 
   def total_price
-    unit_price * quantity
+    if unit_price.present?
+      unit_price * quantity
+    else
+      nil
+    end
   end
 end

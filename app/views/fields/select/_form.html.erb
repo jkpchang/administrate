@@ -15,10 +15,8 @@ to be displayed on a resource's edit form page.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/Select
 %>
 
-<div class="field-unit__label">
-  <%= f.label field.attribute %>
-</div>
-<div class="field-unit__field">
+<%= f.label field.attribute, class: "col-lg-2 control-label" %>
+<div class="col-lg-6">
   <%= f.select(
     field.attribute,
     options_from_collection_for_select(
@@ -26,6 +24,8 @@ to be displayed on a resource's edit form page.
       :to_s,
       :to_s,
       field.data.presence,
-    )
+    ),
+    {},
+    { class: "form-control"}
   ) %>
 </div>

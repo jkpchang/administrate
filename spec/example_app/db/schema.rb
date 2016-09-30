@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119024340) do
+ActiveRecord::Schema.define(version: 20160930214040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20160119024340) do
     t.datetime "updated_at",                            null: false
     t.boolean  "email_subscriber"
     t.string   "kind",             default: "standard", null: false
+    t.string   "favorite_color",   default: "#000000",  null: false
+    t.string   "favorite_font"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -75,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160119024340) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "slug",        null: false
+    t.text     "features"
   end
 
   add_index "products", ["slug"], name: "index_products_on_slug", unique: true, using: :btree
