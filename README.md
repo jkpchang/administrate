@@ -1,3 +1,16 @@
+# UPDATES / Modifications in this fork
+```
+- Currency Field: Similar to Number field, but prefixed with $ and using currency converter to display the number better.
+- Paperclip Field: Display thumbnail of Paperclip pictures properly.
+- Replace all styles with Bootstrap (currently using Bootstrap 3.3.7).
+```
+
+# FUTURE UPDATES PLANNED in this fork
+```
+- Better support for Has_Many relationship and has in-line modal to add associations easily.
+- Port some of the nicer UI features from Rails Admin to here, while maintaining the Rails design of Administrate.
+```
+
 # Administrate
 
 [![Circle CI](https://img.shields.io/circleci/project/thoughtbot/administrate/master.svg)](https://circleci.com/gh/thoughtbot/administrate/tree/master)

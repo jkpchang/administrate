@@ -16,11 +16,15 @@ that displays all possible records to associate with.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/BelongsTo
 %>
 
-<div class="field-unit__label">
-  <%= f.label field.permitted_attribute %>
-</div>
-<div class="field-unit__field">
-  <%= f.select(field.permitted_attribute) do %>
+<%= f.label field.permitted_attribute, class: "col-lg-2 control-label"  %>
+<div class="col-lg-5">
+  <%= f.select(field.permitted_attribute, [], {}, { :class => "form-control" }) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>
   <% end %>
+</div>
+<div class="col-lg-1">
+  <!-- add button -->
+  <button type="button" class="add-model-btn btn" data-add-model-url="<%= url_for([:new, namespace, field.name])  %>?sidebar=false">
+    Add
+  </button>
 </div>
