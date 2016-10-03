@@ -42,8 +42,6 @@ It renders the `_table` partial to display details about the resources.
   </form>
 <% end %>
 
-<br/>
-
 <header class="header">
   <h3 class="header__heading" id="page-title"><%= content_for(:title) %>
   <div class="header__actions pull-right">
@@ -55,7 +53,6 @@ It renders the `_table` partial to display details about the resources.
   </div>
   </h3>
 </header>
-<br/>
 
 <%= render "collection", collection_presenter: page, resources: resources %>
 
