@@ -19,13 +19,12 @@ and is augmented with [Selectize].
 [Selectize]: http://brianreavis.github.io/selectize.js
 %>
 
-<% if field.respond_to? :readonly? and  field.readonly? %>
+<% if field.respond_to? :readonly? and field.readonly? %>
 
-  <%= f.label field.attribute, class: "col-lg-2 control-label"  %>
+  <%= f.label field.attribute, class: "col-lg-2 control-label" %>
 
-  <div class="col-lg-10">
-
-    <% if field.resources.any? %>
+  <% if field.resources.any? %>
+    <div class="col-lg-10">
       <%= render(
               "collection",
               collection_presenter: field.associated_collection,
@@ -33,25 +32,26 @@ and is augmented with [Selectize].
               resources: field.resources,
               reorder_action: field.reorder_action
           ) %>
-
       <% if field.more_than_limit? %>
-    <span>
-      <%= t(
-              'administrate.fields.has_many.more',
-              count: field.limit,
-              total_count: field.data.count,
-          ) %>
-    </span>
+        <span>
+          <%= t(
+                  'administrate.fields.has_many.more',
+                  count: field.limit,
+                  total_count: field.data.count,
+              ) %>
+        </span>
       <% end %>
-
-    <% else %>
-      <%= t("administrate.fields.has_many.none", default: "–") %>
-    <% end %>
-
-  </div>
+    </div>
+  <% else %>
+    <div class="col-lg-6">
+      <div class="form-control">
+        <%= t("administrate.fields.has_many.none", default: "–") %>
+      </div>
+    </div>
+  <% end %>
 
 <% else %>
-  <%= f.label field.attribute, class: "col-lg-2 control-label"  %>
+  <%= f.label field.attribute, class: "col-lg-2 control-label" %>
   <div class="col-lg-6">
     <%= f.select(field.attribute_key, nil, {}, {multiple: true, class: "form-control"}) do %>
       <%= options_for_select(field.associated_resource_options, field.selected_options) %>
