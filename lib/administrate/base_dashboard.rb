@@ -14,6 +14,7 @@ require "administrate/field/font_picker"
 require "administrate/field/html_tinymce"
 require "administrate/field/divider"
 require "administrate/field/currency"
+require "administrate/field/password"
 
 module Administrate
   class BaseDashboard
