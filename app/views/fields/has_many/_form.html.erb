@@ -41,12 +41,28 @@ and is augmented with [Selectize].
               ) %>
         </span>
       <% end %>
+
+      <% if field.upload_action.present? %>
+        <div style="margin-top: 5px; margin-bottom: 10px;">
+          <span>Add more:</span>
+          <%= file_field_tag field.name + "[]", {type: :file, style: "display: inline;", multiple: true} %>
+        </div>
+      <% end %>
+
     </div>
   <% else %>
     <div class="col-lg-6">
       <div class="form-control">
         <%= t("administrate.fields.has_many.none", default: "–") %>
       </div>
+
+      <% if field.upload_action.present? %>
+        <div style="margin-top: 10px; margin-bottom: 15px;">
+          <span>Add more:</span>
+          <%= file_field_tag field.name + "[]", {type: :file, style: "display: inline;", multiple: true} %>
+        </div>
+      <% end %>
+
     </div>
   <% end %>
 
@@ -58,3 +74,4 @@ and is augmented with [Selectize].
     <% end %>
   </div>
 <% end %>
+

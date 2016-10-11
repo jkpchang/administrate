@@ -40,6 +40,10 @@ module Administrate
         options.fetch(:readonly, false)
       end
 
+      def image?
+        options.fetch(:image, false)
+      end
+
       def reorder_action
         options.fetch(:reorder_action, false)
       end

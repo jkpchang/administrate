@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    administrate (0.2.9)
+    administrate (0.2.10)
       autoprefixer-rails (~> 6.0)
       bootstrap-sass (~> 3.3.6)
       bourbon (~> 4.2)
