@@ -40,6 +40,10 @@ and renders all form fields for a resource's editable attributes.
     <% end %>
   <% end -%>
 
+  <% if params[:redirect_url].present? %>
+    <input type="hidden" name="redirect_url" value="<%= params[:redirect_url] %>" />
+  <% end %>
+
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit({class: "btn btn-success"}) %>

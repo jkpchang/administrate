@@ -38,10 +38,16 @@ module Administrate
       resource = resource_class.new(resource_params)
 
       if resource.save
-        redirect_to(
-          [namespace, resource],
-          notice: translate_with_resource("create.success"),
-        )
+        if params[:redirect_url].present?
+          redirect_to(
+              params[:redirect_url]
+          )
+        else
+          redirect_to(
+              [namespace, resource],
+              notice: translate_with_resource("create.success"),
+          )
+        end
       else
         render :new, locals: {
           page: Administrate::Page::Form.new(dashboard, resource),
