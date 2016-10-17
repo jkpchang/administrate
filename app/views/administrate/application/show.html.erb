@@ -35,8 +35,10 @@ as well as a link to its edit page.
   <% page.attributes.each do |attribute| %>
     <tr>
     <% if attribute.name == "divider" %>
-      </table>
-      <table class="table table-bordered">
+      <tr style="background-color: #eee;">
+        <td colspan="2">
+        </td>
+      </tr>
     <% else %>
       <td class="attribute-label">
         <%= t(
