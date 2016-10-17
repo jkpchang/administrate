@@ -16,6 +16,7 @@ require "administrate/field/divider"
 require "administrate/field/currency"
 require "administrate/field/paperclip"
 require "administrate/field/password"
+require "administrate/field/link"
 
 module Administrate
   class BaseDashboard
