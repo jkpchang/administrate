@@ -53,3 +53,12 @@ from the associated resource class's dashboard.
     <button type="submit" class="btn btn-primary">Upload</button>
   <% end %>
 <% end %>
+
+<% if field.action_links.present? %>
+  <% field.action_links.each do |action_link| %>
+    <%= link_to(
+            "<button class='btn btn-default'>#{action_link[:name]}</button>".html_safe,
+            [action_link[:action], namespace, page_resource]
+        ) %>
+  <% end %>
+<% end %>

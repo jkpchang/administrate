@@ -52,6 +52,10 @@ module Administrate
         options.fetch(:upload_action, false)
       end
 
+      def action_links
+        options.fetch(:action_links, [])
+      end
+
       def to_partial_path
         "/fields/#{self.class.field_type}/#{page}"
       end
