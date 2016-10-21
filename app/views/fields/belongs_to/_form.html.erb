@@ -22,9 +22,13 @@ that displays all possible records to associate with.
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>
   <% end %>
 </div>
-<div class="col-lg-1">
-  <!-- add button -->
-  <button type="button" class="add-model-btn btn" data-add-model-url="<%= url_for([:new, namespace, field.name])  %>?sidebar=false&redirect_url=<%= request.original_url %>">
-    Add
-  </button>
-</div>
+
+<% add_url = url_for([:new, namespace, field.name]) rescue nil %>
+<% if add_url.present? %>
+  <div class="col-lg-1">
+    <!-- add button -->
+    <button type="button" class="add-model-btn btn" data-add-model-url="<%= add_url %>?sidebar=false&redirect_url=<%= request.original_url %>">
+      Add
+    </button>
+  </div>
+<% end %>

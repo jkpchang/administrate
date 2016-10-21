@@ -1,7 +1,10 @@
 <%= f.label field.attribute, class: "col-lg-2 control-label" %>
 <div class="col-lg-6">
-  <% if field.respond_to? :image? and field.image? %>
-    <%= image_tag field.thumbnail, {width: "300px"} %>
+  <% if field.image? %>
+    <%= link_to(image_tag(field.thumbnail_url, {style: "max-height: 300px;"}), field.url, target: :blank) %>
+  <% else %>
+    <%= link_to "Download", field.url, target: :blank %>
   <% end %>
+  <br/><br/>
   <%= f.file_field field.attribute %>
 </div>

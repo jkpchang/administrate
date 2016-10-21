@@ -8,13 +8,18 @@ module Administrate
         data.url
       end
 
-      def thumbnail
+      def thumbnail_url
         data.url(:thumb)
       end
 
-      def to_s
-        data
+      def content_type
+        data.content_type
       end
+
+      def image?
+        return !(self.content_type =~ /^image/).nil?
+      end
+
     end
   end
 end
