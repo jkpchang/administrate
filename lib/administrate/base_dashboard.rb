@@ -64,6 +64,10 @@ module Administrate
       "#{resource.class} ##{resource.id}"
     end
 
+    def pundit_scope?
+      defined?(self.class::PUNDIT_SCOPE) and self.class::PUNDIT_SCOPE == true
+    end
+
     private
 
     def attribute_not_found_message(attr)

@@ -7,6 +7,11 @@ module Administrate
       resources = Administrate::Search.new(resource_resolver, search_term).run
       resources = order.apply(resources)
       resources = resources.page(params[:page]).per(records_per_page)
+
+      if dashboard.pundit_scope?
+          resources = policy_scope(resources)
+      end
+
       page = Administrate::Page::Collection.new(dashboard, order: order)
 
       render locals: {
@@ -17,25 +22,46 @@ module Administrate
     end
 
     def show
+
+      if dashboard.pundit_scope?
+        authorize requested_resource
+      end
+
       render locals: {
         page: Administrate::Page::Show.new(dashboard, requested_resource),
       }
     end
 
     def new
+
+      requested_resource = resource_class.new
+      if dashboard.pundit_scope?
+        authorize requested_resource
+      end
+
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, resource_class.new),
+        page: Administrate::Page::Form.new(dashboard, requested_resource),
       }
     end
 
     def edit
+
+      if dashboard.pundit_scope?
+        authorize requested_resource
+      end
+
       render locals: {
         page: Administrate::Page::Form.new(dashboard, requested_resource),
       }
     end
 
     def create
+
       resource = resource_class.new(resource_params)
+
+      if dashboard.pundit_scope?
+        authorize resource
+      end
 
       if resource.save
         if params[:redirect_url].present?
@@ -56,6 +82,11 @@ module Administrate
     end
 
     def update
+
+      if dashboard.pundit_scope?
+        authorize requested_resource
+      end
+
       if requested_resource.update(resource_params)
         if dashboard.respond_to? :update_redirect
           redirect_to(
@@ -75,6 +106,11 @@ module Administrate
     end
 
     def destroy
+
+      if dashboard.pundit_scope?
+        authorize requested_resource
+      end
+
       requested_resource.destroy
       flash[:notice] = translate_with_resource("destroy.success")
       redirect_to action: :index
@@ -112,10 +148,10 @@ module Administrate
     end
 
     def resource_params
-      params.require(resource_name).permit(*permitted_attributes)
+      params.require(resource_name).permit(*dashboard_permitted_attributes)
     end
 
-    def permitted_attributes
+    def dashboard_permitted_attributes
       dashboard.permitted_attributes
     end
 

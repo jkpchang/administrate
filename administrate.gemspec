@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootstrap-sass', '~> 3.3.6'
   s.add_dependency "sass-rails", "~> 5.0"
   s.add_dependency "selectize-rails", "~> 0.6"
+  s.add_dependency "pundit"
 
   s.description = <<-DESCRIPTION
 Administrate is heavily inspired by projects like Rails Admin and ActiveAdmin,
