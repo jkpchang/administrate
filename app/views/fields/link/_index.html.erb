@@ -15,4 +15,10 @@ By default, the attribute is rendered as a truncated string.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/String
 %>
 
-<%= field.truncate %>
+<% if field.data.present? %>
+  <% if field.respond_to?(:link_label) %>
+    <%= link_to field.link_label, field.data, {target: field.target} %>
+  <% else %>
+    <%= field.data %>
+  <% end %>
+<% end %>

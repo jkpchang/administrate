@@ -40,6 +40,7 @@ from the associated resource class's dashboard.
 
 <% else %>
   <%= t("administrate.fields.has_many.none", default: "–") %>
+  <br/>
 <% end %>
 
 <% if field.upload_action.present? %>
@@ -58,7 +59,8 @@ from the associated resource class's dashboard.
   <% field.action_links.each do |action_link| %>
     <%= link_to(
             "<button class='btn btn-default'>#{action_link[:name]}</button>".html_safe,
-            [action_link[:action], namespace, page_resource]
+            [action_link[:action], namespace, page_resource],
+            target: action_link[:target] || "_self"
         ) %>
   <% end %>
 <% end %>
