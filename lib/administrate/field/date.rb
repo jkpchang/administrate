@@ -2,7 +2,7 @@ require_relative "base"
 
 module Administrate
   module Field
-    class DateTime < Base
+    class Date < Base
       def format
         options.fetch(:format, nil)
       end

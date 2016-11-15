@@ -1,6 +1,15 @@
 $(function () {
-  $(".datetimepicker").datetimepicker({
-    debug: false,
-    format: "YYYY-MM-DD HH:mm:ss",
+  $(".datepicker").each(function() {
+    $(this).datetimepicker({
+      debug: false,
+      format: $(this).data("format")
+    })
+  });
+
+  $(".datetimepicker").each(function() {
+    $(this).datetimepicker({
+      debug: false,
+      format: $(this).data("format")
+    })
   });
 });

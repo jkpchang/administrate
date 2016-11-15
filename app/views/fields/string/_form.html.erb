@@ -17,9 +17,13 @@ By default, the input is a text field.
 
 <%= f.label field.attribute, class: "col-lg-2 control-label" %>
 <div class="col-lg-6">
-  <% if field.respond_to? :readonly? and  field.readonly? %>
-    <%= f.text_field field.attribute, :disabled => true, class: "form-control" %>
+  <% if field.valid_values.present? %>
+    <%= f.select field.attribute, options_for_select(field.valid_values), {}, {class: "form-control" } %>
   <% else %>
-    <%= f.text_field field.attribute, class: "form-control" %>
+    <% if field.respond_to? :readonly? and  field.readonly? %>
+      <%= f.text_field field.attribute, :disabled => true, class: "form-control" %>
+    <% else %>
+      <%= f.text_field field.attribute, class: "form-control" %>
+    <% end %>
   <% end %>
 </div>

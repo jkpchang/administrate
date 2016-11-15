@@ -116,6 +116,16 @@ module Administrate
       redirect_to action: :index
     end
 
+    protected
+
+    def resource_params
+      params.require(resource_name).permit(*dashboard_permitted_attributes)
+    end
+
+    def dashboard_permitted_attributes
+      dashboard.permitted_attributes
+    end
+
     private
 
     helper_method :nav_link_state
@@ -145,10 +155,6 @@ module Administrate
 
     def find_resource(param)
       resource_class.find(param)
-    end
-
-    def resource_params
-      params.require(resource_name).permit(*dashboard_permitted_attributes)
     end
 
     def dashboard_permitted_attributes
