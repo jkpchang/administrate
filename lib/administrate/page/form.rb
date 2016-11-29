@@ -16,6 +16,12 @@ module Administrate
         end
       end
 
+      def new_attributes
+        dashboard.new_form_attributes.map do |attribute|
+          attribute_field(dashboard, resource, attribute, :form)
+        end
+      end
+
       def page_title
         dashboard.display_resource(resource)
       end

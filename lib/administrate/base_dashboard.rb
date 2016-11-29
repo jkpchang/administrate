@@ -47,6 +47,14 @@ module Administrate
       self.class::FORM_ATTRIBUTES
     end
 
+    def new_form_attributes
+      if defined?(self.class::NEW_FORM_ATTRIBUTES)
+        self.class::NEW_FORM_ATTRIBUTES
+      else
+        self.class::FORM_ATTRIBUTES
+      end
+    end
+
     def permitted_attributes
       form_attributes.map do |attr|
         attribute_types[attr].permitted_attribute(attr)
