@@ -20,7 +20,9 @@ to do the heavy lifting.
 <header class="header">
   <h3 class="header__heading"><%= content_for(:title) %>
     <div class="header__actions pull-right">
-      <%= link_to 'Back', :back, {class: "button btn btn-info"} %>
+      <%= link_to "<span class='glyphicon glyphicon-back' title='Back'></span>".html_safe,
+                  :back,
+                  {class: "button btn btn-info"} %>
     </div>
   </h3>
 </header>

@@ -22,7 +22,7 @@ as well as a link to its edit page.
   <h3 class="header__heading"><%= content_for(:title) %>
     <div class="header__actions pull-right">
       <%= link_to(
-              "Edit",
+              "<span class='glyphicon glyphicon-pencil' title='Edit'></span>".html_safe,
               [:edit, namespace, page.resource],
               class: "button btn btn-info",
           ) %>

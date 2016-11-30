@@ -21,7 +21,7 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
   <h3 class="header__heading"><%= content_for(:title) %>
     <div class="header__actions pull-right">
       <%= link_to(
-              "Show",
+              "<span class='glyphicon glyphicon-eye-open' title='Show'></span>".html_safe,
               [namespace, page.resource],
               class: "button btn btn-info",
           ) %>
