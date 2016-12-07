@@ -7,8 +7,6 @@ module Administrate
         associated_dashboard.display_resource(data)
       end
 
-      protected
-
       def associated_dashboard
         "#{associated_class_name}Dashboard".constantize.new
       end

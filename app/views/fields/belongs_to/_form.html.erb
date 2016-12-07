@@ -26,7 +26,7 @@ that displays all possible records to associate with.
   <% end %>
 </div>
 
-<% add_url = url_for([:new, namespace, field.name]) rescue nil %>
+<% add_url = url_for([:new, namespace, field.associated_class_name.downcase]) rescue nil %>
 <% if add_url.present? %>
   <div class="col-lg-1">
     <!-- add button -->
