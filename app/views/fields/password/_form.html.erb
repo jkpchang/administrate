@@ -20,6 +20,6 @@ By default, the input is a text field.
   <% if field.respond_to? :readonly? and  field.readonly? %>
     <%= f.password_field field.attribute, :disabled => true, class: "form-control" %>
   <% else %>
-    <%= f.password_field field.attribute, class: "form-control" %>
+    <%= f.password_field field.attribute, {class: "form-control", autocomplete: "new-password"} %>
   <% end %>
 </div>

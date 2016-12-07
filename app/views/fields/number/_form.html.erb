@@ -21,5 +21,8 @@ By default, the input is a text field.
     <%= f.text_field field.attribute, {disabled: true, class: "form-control"} %>
   <% else %>
     <%= f.text_field field.attribute, {class: "form-control"} %>
+    <% if field.respond_to? :required? and field.required? %>
+      <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true" style="color: red; position: absolute; right: 15px; top: 0; line-height: 34px;"></span>
+    <% end %>
   <% end %>
 </div>

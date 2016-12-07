@@ -20,10 +20,13 @@ By default, the input is a text field.
   <% if field.valid_values.present? %>
     <%= f.select field.attribute, options_for_select(field.valid_values, field.data), {}, {class: "form-control" } %>
   <% else %>
-    <% if field.respond_to? :readonly? and  field.readonly? %>
+    <% if field.respond_to? :readonly? and field.readonly? %>
       <%= f.text_field field.attribute, :disabled => true, class: "form-control" %>
     <% else %>
       <%= f.text_field field.attribute, class: "form-control" %>
+      <% if field.respond_to? :required? and field.required? %>
+        <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true" style="color: red; position: absolute; right: 15px; top: 0; line-height: 34px;"></span>
+      <% end %>
     <% end %>
   <% end %>
 </div>

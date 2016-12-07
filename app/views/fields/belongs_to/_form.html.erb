@@ -21,6 +21,9 @@ that displays all possible records to associate with.
   <%= f.select(field.permitted_attribute, [], {}, { :class => "form-control" }) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>
   <% end %>
+  <% if field.respond_to? :required? and field.required? %>
+    <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true" style="color: red; position: absolute; right: 20px; top: 0; line-height: 34px;"></span>
+  <% end %>
 </div>
 
 <% add_url = url_for([:new, namespace, field.name]) rescue nil %>
