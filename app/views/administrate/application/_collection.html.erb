@@ -58,12 +58,7 @@ to display a collection of resources in an HTML table.
 
   <tbody>
   <% resources.each do |resource| %>
-    <tr class="table__row"
-        role="link"
-        tabindex="0"
-        data-url="<%= polymorphic_path([namespace, resource]) -%>"
-        resource-id="<%= resource.id -%>"
-    >
+    <tr>
       <% collection_presenter.attributes_for(resource).each do |attribute| %>
         <td class="cell-data cell-data--<%= attribute.html_class %>">
           <%= render_field attribute, {page_resource: resource} %>
@@ -71,6 +66,11 @@ to display a collection of resources in an HTML table.
       <% end %>
 
       <td>
+        <%= link_to(
+                "<span class='glyphicon glyphicon-eye-open' title='Details'></span>".html_safe,
+                [namespace, resource],
+            ) %> &nbsp;
+
         <%= link_to(
                 "<span class='glyphicon glyphicon-pencil' title='Edit'></span>".html_safe,
                 [:edit, namespace, resource],
