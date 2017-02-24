@@ -58,7 +58,7 @@ to display a collection of resources in an HTML table.
 
   <tbody>
   <% resources.each do |resource| %>
-    <tr>
+    <tr resource-id="<%= resource.id -%>">
       <% collection_presenter.attributes_for(resource).each do |attribute| %>
         <td class="cell-data cell-data--<%= attribute.html_class %>">
           <%= render_field attribute, {page_resource: resource} %>

@@ -19,7 +19,7 @@ By default, the input is a text field that is augmented with [DateTimePicker].
 <%= f.label field.attribute, {class: "col-lg-2 control-label"} %>
 <div class="col-lg-6">
   <div class="input-group">
-    <%= f.text_field field.attribute, {class: "datepicker form-control", data: {format: field.format}} %>
+    <%= f.date_field field.attribute, {class: "form-control"} %>
     <div class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></div>
   </div>
 </div>
