@@ -45,11 +45,13 @@ It renders the `_table` partial to display details about the resources.
 <header class="header">
   <h3 class="header__heading" id="page-title"><%= content_for(:title) %>
     <div class="header__actions pull-right">
-      <%= link_to(
-              "<span class='glyphicon glyphicon-plus' title='New'></span>".html_safe,
-              [:new, namespace, page.resource_name],
-              class: "button btn btn-info",
-          ) %>
+      <% if (policy(page.resource_name.classify.safe_constantize.new).create? rescue true) %>
+        <%= link_to(
+                "<span class='glyphicon glyphicon-plus' title='New'></span>".html_safe,
+                [:new, namespace, page.resource_name],
+                class: "button btn btn-info",
+            ) %>
+      <% end %>
     </div>
   </h3>
 </header>

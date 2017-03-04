@@ -59,6 +59,10 @@ module Administrate
       form_attributes.map do |attr|
         attribute_types[attr].permitted_attribute(attr)
       end.uniq
+
+      new_form_attributes.map do |attr|
+        attribute_types[attr].permitted_attribute(attr)
+      end.uniq
     end
 
     def show_page_attributes
