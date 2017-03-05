@@ -113,7 +113,15 @@ module Administrate
 
       requested_resource.destroy
       flash[:notice] = translate_with_resource("destroy.success")
-      redirect_to action: :index
+
+      if dashboard.respond_to? :update_redirect
+        redirect_to(
+            dashboard.update_redirect(requested_resource)
+        )
+      else
+        redirect_to action: :index
+      end
+
     end
 
     protected
