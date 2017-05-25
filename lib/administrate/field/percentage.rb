@@ -4,7 +4,7 @@ module Administrate
   module Field
     class Percentage < Administrate::Field::Base
       def to_s
-        helper.number_to_percentage(data * 100, :precision => 2)
+        helper.number_to_percentage(data, :precision => 1)
       end
 
       private
