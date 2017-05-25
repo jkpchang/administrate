@@ -2,13 +2,9 @@ require_relative "base"
 
 module Administrate
   module Field
-    class Currency < Administrate::Field::Base
+    class Percentage < Administrate::Field::Base
       def to_s
-        helper.number_to_currency(data, :precision => 2)
-      end
-
-      def formatted_form_data
-        return helper.number_with_precision(data, :precision => 2)
+        helper.number_to_percentage(data * 100, :precision => 2)
       end
 
       private
