@@ -1,5 +1,9 @@
-<% if field.image? %>
-  <%= link_to(image_tag(field.thumbnail_url, {style: "max-height: 300px;"}), field.url, target: :blank) %>
+<% if field.has_data? %>
+  <% if field.image? %>
+    <%= link_to(image_tag(field.thumbnail_url, {style: "max-height: 300px;"}), field.url, target: :blank) %>
+  <% else %>
+    <%= link_to "Download", field.url, target: :blank %>
+  <% end %>
 <% else %>
-  <%= link_to "Download", field.url, target: :blank %>
+    <p>Not Available</p>
 <% end %>

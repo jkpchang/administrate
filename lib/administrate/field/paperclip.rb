@@ -20,6 +20,10 @@ module Administrate
         return !(self.content_type =~ /^image/).nil?
       end
 
+      def has_data?
+        return data.present?
+      end
+
     end
   end
 end
