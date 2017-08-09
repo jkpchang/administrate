@@ -18,7 +18,7 @@ that displays all possible records to associate with.
 
 <%= f.label field.permitted_attribute, class: "col-lg-2 control-label"  %>
 <div class="col-lg-5">
-  <%= f.select(field.permitted_attribute, [], {}, { :class => "form-control" }) do %>
+  <%= f.select(field.permitted_attribute, [], {}, { :class => "form-control selectpicker" }) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>
   <% end %>
   <% if field.respond_to? :required? and field.required? %>

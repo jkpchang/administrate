@@ -5,6 +5,7 @@
 //= require moment
 //= require datetime_picker
 //= require_tree .
+//= require bootstrap-select
 
 $(function () {
 
@@ -79,5 +80,11 @@ $(function () {
       });
     }
   });
+
+  // add live search to all select pickers
+  $(".selectpicker").each(function(index, item) {
+    $(item).attr("data-live-search", "true");
+  })
+
 });
 
