@@ -11,6 +11,10 @@ module Administrate
         options.fetch(:valid_values, nil)
       end
 
+      def maxlength
+        options.fetch(:maxlength, nil)
+      end
+
       def truncate
         data.to_s[0...truncation_length]
       end

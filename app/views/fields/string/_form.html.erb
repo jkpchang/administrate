@@ -23,7 +23,11 @@ By default, the input is a text field.
     <% if field.respond_to? :readonly? and field.readonly? %>
       <%= f.text_field field.attribute, :readonly => "readonly", class: "form-control" %>
     <% else %>
-      <%= f.text_field field.attribute, class: "form-control" %>
+      <% if field.respond_to? :maxlength and field.maxlength.present? %>
+          <%= f.text_field field.attribute, class: "form-control", maxlength: field.maxlength %>
+      <% else %>
+          <%= f.text_field field.attribute, class: "form-control" %>
+      <% end %>
       <% if field.respond_to? :required? and field.required? %>
         <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true" style="color: red; position: absolute; right: 15px; top: 0; line-height: 34px;"></span>
       <% end %>
