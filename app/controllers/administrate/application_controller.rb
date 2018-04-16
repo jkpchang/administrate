@@ -95,7 +95,8 @@ module Administrate
       if requested_resource.update(resource_params)
         if dashboard.respond_to? :update_redirect
           redirect_to(
-            dashboard.update_redirect(requested_resource)
+            dashboard.update_redirect(requested_resource),
+            notice: translate_with_resource("update.success"),
           )
         else
           redirect_to(
@@ -121,7 +122,8 @@ module Administrate
 
       if dashboard.respond_to? :update_redirect
         redirect_to(
-          dashboard.update_redirect(requested_resource)
+          dashboard.update_redirect(requested_resource),
+          notice: translate_with_resource("destroy.success"),
         )
       else
         redirect_to action: :index
