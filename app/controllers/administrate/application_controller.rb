@@ -9,7 +9,7 @@ module Administrate
       resources = resources.page(params[:page]).per(records_per_page)
 
       if dashboard.pundit_scope?
-          resources = policy_scope(resources)
+        resources = policy_scope(resources)
       end
 
       page = Administrate::Page::Collection.new(dashboard, order: order)
@@ -66,12 +66,17 @@ module Administrate
       if resource.save
         if params[:redirect_url].present?
           redirect_to(
-              params[:redirect_url]
+            params[:redirect_url]
+          )
+        elsif dashboard.respond_to? :create_redirect
+          redirect_to(
+            dashboard.create_redirect(resource),
+            notice: translate_with_resource("create.success"),
           )
         else
           redirect_to(
-              [namespace, resource],
-              notice: translate_with_resource("create.success"),
+            [namespace, resource],
+            notice: translate_with_resource("create.success"),
           )
         end
       else
@@ -90,12 +95,12 @@ module Administrate
       if requested_resource.update(resource_params)
         if dashboard.respond_to? :update_redirect
           redirect_to(
-              dashboard.update_redirect(requested_resource)
+            dashboard.update_redirect(requested_resource)
           )
         else
           redirect_to(
-              [namespace, requested_resource],
-              notice: translate_with_resource("update.success"),
+            [namespace, requested_resource],
+            notice: translate_with_resource("update.success"),
           )
         end
       else
@@ -116,7 +121,7 @@ module Administrate
 
       if dashboard.respond_to? :update_redirect
         redirect_to(
-            dashboard.update_redirect(requested_resource)
+          dashboard.update_redirect(requested_resource)
         )
       else
         redirect_to action: :index
@@ -137,6 +142,7 @@ module Administrate
     private
 
     helper_method :nav_link_state
+
     def nav_link_state(resource)
       if resource_name.to_s.pluralize == resource.to_s
         :active
