@@ -12,13 +12,13 @@ This partial renders flash messages on every page.
 %>
 
 <% if flash[:notice].present? %>
-  <div class="alert alert-info"><%= flash[:notice] %></div>
+  <div class="alert alert-info"><%= flash[:notice].html_safe unless flash[:notice].blank? %></div>
 <% end %>
 
 <% if flash[:alert].present? %>
-  <div class="alert alert-warning"><%= flash[:alert] %></div>
+  <div class="alert alert-warning"><%= flash[:alert].html_safe unless flash[:alert].blank? %></div>
 <% end %>
 
 <% if flash[:error].present? %>
-  <div class="alert alert-danger"><%= flash[:error] %></div>
+  <div class="alert alert-danger"><%= flash[:error].html_safe unless flash[:error].blank? %></div>
 <% end %>
