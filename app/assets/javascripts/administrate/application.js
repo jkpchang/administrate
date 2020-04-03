@@ -41,6 +41,7 @@ $(function () {
     selector: 'textarea.tinymce',
     height: 200,
     relative_urls: false,
+    document_base_url: "http://www.blah.com",
     plugins: [
       'advlist autolink lists link image charmap print preview anchor',
       'searchreplace visualblocks code fullscreen',
